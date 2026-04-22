@@ -9,7 +9,7 @@ import { z } from "zod";
 
 const SEARCH_URL = process.env.UPSTASH_SEARCH_REST_URL!;
 const SEARCH_TOKEN = process.env.UPSTASH_SEARCH_REST_TOKEN!;
-const CATALOG_INDEX = process.env.UPSTASH_CATALOG_INDEX ||
+const CATALOG_INDEX = process.env.UPSTASH_CATALOG_INDEX || "catalog";
 const bridgeboxIndex = (userId: string) => `bridgebox-${userId}`;
 
 // ─────────────────────────────────────────────
