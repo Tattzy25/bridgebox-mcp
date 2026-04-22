@@ -9,7 +9,7 @@ import { z } from "zod";
 
 const SEARCH_URL = process.env.UPSTASH_SEARCH_REST_URL!;
 const SEARCH_TOKEN = process.env.UPSTASH_SEARCH_REST_TOKEN!;
-const CATALOG_INDEX = process.env.UPSTASH_CATALOG_INDEX || "SKILLZILLA"; // Make this an env variable for flexibility!
+const CATALOG_INDEX = process.env.UPSTASH_CATALOG_INDEX ||
 const bridgeboxIndex = (userId: string) => `bridgebox-${userId}`;
 
 // ─────────────────────────────────────────────
@@ -434,6 +434,8 @@ function createBridgeBoxServer(userId: string): McpServer {
 
 const app = express();
 app.use(express.json());
+
+app.get("/favicon.ico", (_req, res) => res.status(204).end());
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", service: "bridgebox-mcp-server" });
